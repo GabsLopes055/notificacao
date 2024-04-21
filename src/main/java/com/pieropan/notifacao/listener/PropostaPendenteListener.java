@@ -1,6 +1,7 @@
 package com.pieropan.notifacao.listener;
 
 import com.pieropan.notifacao.domain.Proposta;
+import com.pieropan.notifacao.domain.Usuario;
 import com.pieropan.notifacao.service.NotificarEmailService;
 import jakarta.mail.MessagingException;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -17,11 +18,11 @@ public class PropostaPendenteListener {
 
 
     @RabbitListener(queues = "${rabbitmq.queue.proposta.pendente}")
-    public void PropostaPendente(Proposta proposta) throws MessagingException, UnsupportedEncodingException {
-        System.out.println("RECEBI PROPOSTA");
+    public void PropostaPendente(Usuario usuario) throws MessagingException, UnsupportedEncodingException {
+        System.out.println("RECEBI NOTIFICACAO");
         System.out.println("************");
-        System.out.println(proposta.getUsuario().getEmail());
-        this.service.notificar(proposta);
+        System.out.println(usuario);
+        this.service.notificar(usuario);
     }
 
 }
