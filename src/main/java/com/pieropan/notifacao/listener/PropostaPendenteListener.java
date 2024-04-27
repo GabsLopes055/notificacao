@@ -18,10 +18,11 @@ public class PropostaPendenteListener {
 
 
     @RabbitListener(queues = "${rabbitmq.queue.proposta.pendente}")
-    public void PropostaPendente(Usuario usuario) throws MessagingException, UnsupportedEncodingException {
+    public void PropostaPendente(Usuario usuario) {
         System.out.println("RECEBI NOTIFICACAO");
         System.out.println("************");
         System.out.println(usuario);
+
         this.service.notificar(usuario);
     }
 

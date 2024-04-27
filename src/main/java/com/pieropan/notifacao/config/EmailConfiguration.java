@@ -56,15 +56,12 @@ public class EmailConfiguration {
         MimeMessage message = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        helper.setFrom(fromAddres, senderName);
-        helper.setTo(toAddres);
-        helper.setSubject(subject);
-
-        content = content.replace("[[NAME]]", nomeUsuario);
-
-        helper.setText(content, true);
-
-        sender.send(message);
+            helper.setFrom(fromAddres, senderName);
+            helper.setTo(toAddres);
+            helper.setSubject(subject);
+            helper.setText(content, true);
+            content = content.replace("[[NAME]]", nomeUsuario);
+            sender.send(message);
 
 
     }
